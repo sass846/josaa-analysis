@@ -9,9 +9,11 @@ python -m venv --prompt coolname .venv
 Now you can observe a hidden directory .venv containing your virtual environment.
 
 To activate your environment
+For windows/mac
 ```bash Linux/Mac
 source .venv/bin/activate
 ```
+For windows(PS):
 ```ps Windows(PS)
 venv\Scripts\Activate.ps1
 ```

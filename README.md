@@ -10,7 +10,7 @@ Now you can observe a hidden directory .venv containing your virtual environment
 
 To activate your environment
 
-For windows/mac
+For Linux/mac:
 ```bash Linux/Mac
 source .venv/bin/activate
 ```

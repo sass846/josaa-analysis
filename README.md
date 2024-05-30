@@ -16,7 +16,7 @@ source .venv/bin/activate
 ```
 For windows(PS):
 ```ps Windows(PS)
-venv\Scripts\Activate.ps1
+.venv\Scripts\Activate.ps1
 ```
 
 ### Dependencies

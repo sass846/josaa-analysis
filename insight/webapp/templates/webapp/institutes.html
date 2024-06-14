@@ -3,3 +3,30 @@
 {% block title %}
 Participating Insitutes
 {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4 fw-bolder">Participating Institutes</h1>
+    <p> Here is a list of all the institutes participating in the JoSAA counselling process. You can find their websites and contact information below. </p>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th> Sl.No. </th>
+                <th> Institute Code and Name </th>
+                <th> Phone/Fax/Email </th>
+                <th> Website </th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for institute in institutes %}
+            <tr>
+                <td> {{ forloop.counter }} </td>
+                <td> {{ institute.name }} </td>
+                <td> {{ institute.contact }} </td>
+                <td> <a href="{{ institute.website }}" target="_blank"> {{ institute.website }} </a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

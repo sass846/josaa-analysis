@@ -1,1 +1,73 @@
 {% extends "webapp/base.html" %}
+
+{% block content %}
+    <main>
+      <div class="container">
+        <div class="row justify-content-start">
+
+          <div class="col-sm-12 col-md-4 col-lg-4 text-start text-md-center my-4">
+            <a href="{% url 'institutes' %}" style="text-decoration: none; color: inherit;">
+              <div class="card text-dark index-card" id="participating-institutes-card">
+                <div class="card-body py-3">
+                  <img src="../../static/assets/university-svgrepo-com.svg" height="150px" width="150px">
+                </div>
+                <div class="card-footer">
+                  <h5 class="card-title">Participating Institutes</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4 text-start text-md-center my-4">
+            <a href="{% url 'seats' %}" style="text-decoration: none; color: inherit;">
+              <div class="card text-dark index-card" id="seat-matrix-card">
+                <div class="card-body py-3">
+                  <img src="../../static/assets/seats-theater-svgrepo-com.svg" height="150px" width="150px">
+                </div>
+                <div class="card-footer">
+                  <h5 class="card-title">Seat Matrix</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+
+          <div class="col-sm-12 col-md-4 col-lg-4 text-start text-md-center my-4">
+            <a href="{% url 'analysis' %}" style="text-decoration: none; color: inherit;">
+              <div class="card text-dark index-card" id="py-analysis-card">
+                <div class="card-body py-3">
+                  <img src="../../static/assets/chart-mixed-alt-svgrepo-com.svg" height="150px" width="150px">
+                </div>
+                <div class="card-footer">
+                  <h5 class="card-title">Previous Year Analysis</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    
+    <!-- josaa -->
+    <div class="container">
+      <div class="card no-hover w-50">
+        <div class="card-body">
+          <h5 class="card-title">JoSAA</h5>
+          <p class="card-text">
+            Make sure to stay updated with the latest notifications and announcements on the JoSAA website to make informed decisions regarding your college admissions.
+            To fill your choices for JoSAA and to get any additional information, visit the official JoSAA website. </p>
+          <a href="https://josaa.nic.in/" target="_blank" class="btn btn-primary">Click Here</a>
+        </div>
+      </div>
+    </div>
+
+    </main>
+    <!-- intro -->
+
+
+    <!-- features -->
+      
+    <!-- calender -->
+
+
+    {% endblock %}

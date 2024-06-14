@@ -9,3 +9,12 @@ def about(request):
 
 def contact(request):
     return render(request, 'webapp/contact.html')
+
+def institutes(request):
+    return render(request, 'webapp/institutes.html')
+
+def seats(request):
+    return render(request, 'webapp/seats.html')
+
+def analysis(request):
+    return render(request, 'webapp/analysis.html')

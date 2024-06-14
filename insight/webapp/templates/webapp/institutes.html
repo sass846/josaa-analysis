@@ -20,7 +20,7 @@ Participating Insitutes
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            {% for institute in institutes %}
+            {% for institute in page_obj %}
             <tr>
                 <td> {{ forloop.counter }} </td>
                 <td> {{ institute.name }} </td>

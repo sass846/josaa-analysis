@@ -13,10 +13,16 @@ def contact(request):
 
 def institutes(request):
     institutes = Institute.objects.all()
-    paginator = Paginator(institutes, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'webapp/institutes.html', {'page_obj': page_obj})
+    paginator = Paginator(institutes, 15)
+    page = request.GET.get('page')
+    insti = paginator.get_page(page)
+    start = (insti.number - 1) * insti.paginator.per_page
+    nums = "a"*insti.paginator.num_pages
+    return render(request, 'webapp/institutes.html', {
+        'institutes': insti,
+        'start': start,
+        'nums': nums
+        })
 
 def seats(request):
     return render(request, 'webapp/seats.html')

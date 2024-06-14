@@ -11,3 +11,11 @@ class josaa(models.Model):
     opening_rank = models.IntegerField()
     closing_rank = models.IntegerField()
     preparatory = models.BooleanField()
+
+class Institute(models.Model):
+    name = models.CharField(max_length=255)
+    location = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    fax = models.CharField(max_length=20)
+    website = models.URLField()

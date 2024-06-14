@@ -13,7 +13,9 @@ Participating Insitutes
             <tr>
                 <th> Sl.No. </th>
                 <th> Institute Code and Name </th>
-                <th> Phone/Fax/Email </th>
+                <th> Email ID </th>
+                <th> Phone </th>
+                <th> Fax </th>
                 <th> Website </th>
             </tr>
         </thead>
@@ -22,7 +24,9 @@ Participating Insitutes
             <tr>
                 <td> {{ forloop.counter }} </td>
                 <td> {{ institute.name }} </td>
-                <td> {{ institute.contact }} </td>
+                <td> {{ institute.email }} </td>
+                <td> {{ institute.phone }} </td>
+                <td> {{ institute.fax }} </td>
                 <td> <a href="{{ institute.website }}" target="_blank" class="text-decoration-none text-primary"> {{ institute.website }} </a> </td>
             </tr>
             {% endfor %}

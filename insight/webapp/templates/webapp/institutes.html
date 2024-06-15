@@ -8,6 +8,16 @@ Participating Insitutes
 <div class="container">
     <h1 class="my-4 fw-bolder">Participating Institutes</h1>
     <p> Here is a list of all the institutes participating in the JoSAA counselling process. You can find their websites and contact information below. </p>
+    <div class="d-flex justify-content-end">
+        <nav aria-label="Page navigation example flex-row">
+            <ul class="pagination">          
+                {% comment %} <li class="page-item"><a href="#" class="page-link disabled">Page {{ institutes.number }} of {{ institutes.paginator.num_pages }}</a></li> {% endcomment %}
+                {% for i in nums %}
+                <li class="page-item {% if forloop.counter == institutes.number %}active{% endif %}"><a href="?page={{ forloop.counter }}" class="page-link">{{ forloop.counter }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -36,23 +46,25 @@ Participating Insitutes
     </table>
 
     <br>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            {% if institutes.has_previous %}
-            <li class="page-item"><a href="?page-1" class="page-link">&laquo; First</a></li>
-            <li class="page-item"><a href="?page={{ institutes.previous_page_number }}" class="page-link">Previous</a></li>
-            {% endif %}
-        
-            {% comment %} <li class="page-item"><a href="#" class="page-link disabled">Page {{ institutes.number }} of {{ institutes.paginator.num_pages }}</a></li> {% endcomment %}
-            {% for i in nums %}
-            <li class="page-item {% if forloop.counter == institutes.number %}active{% endif %}"><a href="?page={{ forloop.counter }}" class="page-link">{{ forloop.counter }}</a></li>
-            {% endfor %}
-            {% if institutes.has_next %}
-            <li class="page-item"><a href="?page={{ institutes.next_page_number }}" class="page-link">Next</a></li>
-            <li class="page-item"><a href="?page={{ institutes.paginator.num_pages }}" class="page-link">Last &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example flex-row">
+            <ul class="pagination">
+                {% if institutes.has_previous %}
+                <li class="page-item"><a href="?page-1" class="page-link">&laquo; First</a></li>
+                <li class="page-item"><a href="?page={{ institutes.previous_page_number }}" class="page-link">Previous</a></li>
+                {% endif %}
+            
+                {% comment %} <li class="page-item"><a href="#" class="page-link disabled">Page {{ institutes.number }} of {{ institutes.paginator.num_pages }}</a></li> {% endcomment %}
+                {% for i in nums %}
+                <li class="page-item {% if forloop.counter == institutes.number %}active{% endif %}"><a href="?page={{ forloop.counter }}" class="page-link">{{ forloop.counter }}</a></li>
+                {% endfor %}
+                {% if institutes.has_next %}
+                <li class="page-item"><a href="?page={{ institutes.next_page_number }}" class="page-link">Next</a></li>
+                <li class="page-item"><a href="?page={{ institutes.paginator.num_pages }}" class="page-link">Last &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
 
 </div>
 {% endblock %}

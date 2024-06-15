@@ -5,5 +5,161 @@ Josaa Analysis
 {% endblock %}
 
 {% block content %}
+{% comment %} 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('instituteType').addEventListener('change', function() {
+        var type = this.value;
+        var iit = "indian institute of technology";
+        var nit = "national institute of technology";
+        var iiit = "indian institute of information technology";
+        var nameSelect = document.getElementById('instituteName');
+        var options = nameSelect.getElementsByTagName('option');
 
+        for (var i = 0; i < options.length; i++) {
+            var option = options[i];
+
+            // Hide the option if the type is not included in the name
+            if (type == "IIT" && !name.includes(iit)) {
+            option.style.display = 'none';
+            else if(type == "NIT" && !name.includes(nit)){
+                option.style.display = 'none';
+            }
+            else if(type == "IIIT" && !name.includes(iiit)){
+                option.style.display = 'none';
+            } 
+            else if(type == "GFTI" && name.includes(iit) || name.includes(nit) || name.includes(iiit)){
+                option.style.display = 'none';
+            }
+            else if(){
+                option.style.display = '';
+            }
+        }
+
+        // Reset the selected value
+        nameSelect.value = '';
+    });
+}); {% endcomment %}
+</script>
+
+
+<div class="container-fluid">
+    <div class="row">
+      
+        <main class="col-md-9">
+            <h1>Analysis</h1>
+            <table class="table table-striped" id="table_analysis">
+                <thead>
+                    <tr>
+                        <th scope="col">Institute</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Opening Rank</th>
+                        <th scope="col">Closing Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr>
+                        <td>{{ item.institute }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.gender }}</td>
+                        <td>{{ item.branch }}</td>
+                        <td>{{ item.opening_rank }}</td>
+                        <td>{{ item.closing_rank }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="display: inline-block;">
+        <div class="position-sticky pt-3">
+          <h5>Filter</h5>
+          <form id="filterForm" method="get" action="{% url 'analysis' %}">
+            {% comment %} <div class="mb-3">
+              <label for="instituteType" class="form-label">Institute Type</label>
+              <select class="form-select" id="instituteType" name="institute_type">
+                <option value="">Select Institute Type</option>
+                <option value="IIT">IIT</option>
+                <option value="NIT">NIT</option>
+                <option value="IIIT">IIIT</option>
+                <option value="GFTI">GFTI</option>
+              </select>
+            </div> {% endcomment %}
+            <div class="mb-3">
+              <label for="instituteName" class="form-label">Institute Name</label>
+              <select class="form-select" id="instituteName" name="institute_name">
+                <option value="">Select Institute Name</option>
+                {% for institute in institutes %}
+                <option value="{{ institute }}" data-type="{{ institute.type }}">{{ institute }}</option>
+                {% endfor %}
+                    
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="category" class="form-label">Category</label>
+              <select class="form-select" id="category" name="category">
+                <option value="">Select Category</option>
+                <option value="GEN">GEN</option>
+                <option value="OBC-NCL">OBC-NCL</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="EWS">EWS</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <select class="form-select" id="gender" name="gender">
+                <option value="">Select Gender</option>
+                <option value="Gender-Neutral">Gender-Neutral</option>
+                <option value="Female-only (including Supernumerary)">Female-only (including Supernumerary)</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Apply Filters</button>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="showTable">
+                <label class="form-check-label" for="showTable">Show Table</label>
+              </div>
+          </form>
+        </div>
+      </nav>
+  
+
+    </div>
+  </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const instituteTypeSelect = document.getElementById('instituteType');
+          const instituteNameSelect = document.getElementById('instituteName');
+      
+          instituteTypeSelect.addEventListener('change', function() {
+            const selectedType = this.value;
+            fetch(`/api/institute-names/?type=${selectedType}`)
+              .then(response => response.json())
+              .then(data => {
+                instituteNameSelect.innerHTML = '<option value="">Select Institute Name</option>';
+                data.forEach(name => {
+                  const option = document.createElement('option');
+                  option.value = name;
+                  option.textContent = name;
+                  instituteNameSelect.appendChild(option);
+                });
+              });
+          });
+        });
+
+        document.getElementById('showTable').addEventListener('change', function() {
+            var table = document.getElementById('table_analysis');
+        
+            if (this.checked) {
+                table.style.display = '';
+            } else {
+                table.style.display = 'none';
+            }
+        });
+      </script>
 {% endblock %}

@@ -6,48 +6,79 @@ Seat Matrix
 
 {% block content %}
 
-<main class="col-md-9">
+<div class="container-fluid">
     <h1>Seat Matrix</h1>
 
-    <div class = "col-8 offset-2 my-5">
-        <div class = "card">
-            <div class = "card-body">
-                <h5>Category wise</h5>
-                <hr>
-                <canvas id="category_chart"></canvas>
+    <div class="row">
+        <div class="col-6 my-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Total seats</h5>
+                    <hr>
+                    <canvas id="inst_type_chart"></canvas>
+                </div>
             </div>
+        </div>
 
+        <div class="col-6 my-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Total seats in IITs Category wise</h5>
+                    <hr>
+                    <canvas id="category_chart"></canvas>
+                </div>
+            </div>
         </div>
     </div>
-
-</main>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
 
-
 <script>
-    const ctx = document.getElementById('category_chart').getContext('2d');
-    const chart = new Chart(ctx, {
-    type: 'doughnut',
-
-    data: {
-        labels: ['Open', 'Open-PWD', 'Gen-EWS', 'Gen-EWS-PWD',  'SC', 'SC-PWD', 'ST', 'ST-PWD', 'OBC-NCL', 'OBC-NCL-PWD'],
-        datasets: [{
-            label: 'Seat Matrix',
-            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(153, 102, 255)', 'rgb(255, 159, 64)', 'rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)'],
-            borderColor: 'rgb(255, 99, 132)',
-            data: [6826, 356, 1696, 86, 2535, 132, 1278, 56, 4564, 231],
-            borderWidth: 1
-        }]
-    },
-
-
-    options: {
-        legend: {
-            display: true
+    const instCtx = document.getElementById('inst_type_chart').getContext('2d');
+    const instChart = new Chart(instCtx, {
+        type: 'bar',
+        data: {
+            labels: ['IIT', 'NIT', 'IIIT', 'GFTIs'],
+            datasets: [{
+                label: 'Seat Matrix',
+                backgroundColor: ['rgb(255, 99, 132)', 'aqua', 'green', 'orange'],
+                borderColor: 'rgb(255, 99, 132)',
+                data: [17385, 23954, 7746, 8067],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            }
         }
-    }
-});
+    });
+
+    const catCtx = document.getElementById('category_chart').getContext('2d');
+    const catChart = new Chart(catCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Open', 'Open-PWD', 'Gen-EWS', 'Gen-EWS-PWD', 'SC', 'SC-PWD', 'ST', 'ST-PWD', 'OBC-NCL', 'OBC-NCL-PWD'],
+            datasets: [{
+                label: 'Seat Matrix',
+                backgroundColor: [
+                    'rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 
+                    'rgb(75, 192, 192)', 'rgb(153, 102, 255)', 'rgb(255, 159, 64)', 
+                    'rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 
+                    'rgb(75, 192, 192)'
+                ],
+                borderColor: 'rgb(255, 99, 132)',
+                data: [6826, 356, 1696, 86, 2535, 132, 1278, 56, 4564, 231],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            legend: {
+                display: true
+            }
+        }
+    });
 </script>
 
 {% endblock %}

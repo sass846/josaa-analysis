@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-# from django.core import serializers
-from .models import Institute, josaa
+from .models import josaa, Institute
 
 def index(request):
     return render(request, 'webapp/index.html')
@@ -18,12 +17,12 @@ def institutes(request):
     page = request.GET.get('page')
     insti = paginator.get_page(page)
     start = (insti.number - 1) * insti.paginator.per_page
-    nums = "a"*insti.paginator.num_pages
+    nums = "a" * insti.paginator.num_pages
     return render(request, 'webapp/institutes.html', {
         'institutes': insti,
         'start': start,
         'nums': nums
-        })
+    })
 
 def seats(request):
     return render(request, 'webapp/seats.html')
@@ -31,10 +30,6 @@ def seats(request):
 def analysis(request):
     josaa_data = josaa.objects.all()
     institutes = josaa.objects.values_list('institute', flat=True).distinct()
-
-    # institute_type = request.GET.get('institute_type')
-    # if institute_type:
-    #     josaa_data = josaa_data.filter(institute_type=institute_type)
 
     institute_name = request.GET.get('institute_name')
     if institute_name:
@@ -52,13 +47,11 @@ def analysis(request):
     page = request.GET.get('page')
     pg_data = paginator.get_page(page)
     start = (pg_data.number - 1) * pg_data.paginator.per_page
-    nums = "a"*pg_data.paginator.num_pages
+    nums = "a" * pg_data.paginator.num_pages
 
-
-    # serialized_data = serializers.serialize('json', josaa_data)
     return render(request, 'webapp/analysis.html', {
-        'institutes':institutes,
-          'pg_data': pg_data,
-          'start': start,
-          'nums':nums
-          })
+        'institutes': institutes,
+        'pg_data': pg_data,
+        'start': start,
+        'nums': nums
+    })

@@ -20,7 +20,7 @@ The JoSAA Analysis portal aims to provide users with detailed information about 
 ## Setup
 To avoid altering your environment, initialize a Python virtual environment:
 ```bash
-python -m venv --coolname josaa-analysis .venv
+python -m venv --prompt coolname .venv
 ```
 You will now see a hidden directory `.venv` containing your virtual environment
 

@@ -48,5 +48,17 @@ def analysis(request):
     if gender:
         josaa_data = josaa_data.filter(gender=gender)
 
+    paginator = Paginator(josaa_data, 10)
+    page = request.GET.get('page')
+    pg_data = paginator.get_page(page)
+    start = (pg_data.number - 1) * pg_data.paginator.per_page
+    nums = "a"*pg_data.paginator.num_pages
+
+
     # serialized_data = serializers.serialize('json', josaa_data)
-    return render(request, 'webapp/analysis.html', {'institutes':institutes, 'data': josaa_data})
+    return render(request, 'webapp/analysis.html', {
+        'institutes':institutes,
+          'pg_data': pg_data,
+          'start': start,
+          'nums':nums
+          })

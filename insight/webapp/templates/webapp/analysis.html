@@ -44,10 +44,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <div class="container-fluid">
-    <div class="row">
-      
-        <main class="col-md-9">
+    <div class="row d-flex justify-content-between">
+        <main class="col-md-9 flex-row">
             <h1>Analysis</h1>
+            <title>Seat Matrix</title>
+          </head>
+          <body class = "bg-success">
+        
+            <div class = "col-8 offset-2 my-5">
+                <div class = "card">
+                    <div class = "card-body">
+
+                        <canvas id="analysis_chart"></canvas>
+                    </div>
+        
+                </div>
+            </div>
             <table class="table table-striped" id="table_analysis">
                 <thead>
                     <tr>
@@ -72,9 +84,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     {% endfor %}
                 </tbody>
             </table>
+
+            <br>
+            <div class="d-flex justify-content-center" >
+                <nav aria-label="Page navigation example flex-row" id="analysis_paginator" style="display:none">
+                    <ul class="pagination">
+                        {% if pg_data.has_previous %}
+                        <li class="page-item"><a href="?page-1" class="page-link">&laquo; First</a></li>
+                        <li class="page-item"><a href="?page={{ pg_data.previous_page_number }}" class="page-link">Previous</a></li>
+                        {% endif %}
+                    
+                        {% comment %} <li class="page-item"><a href="#" class="painstitutesge-link disabled">Page {{ institutes.number }} of {{ institutes.paginator.num_pages }}</a></li> {% endcomment %}
+                        {% for i in nums %}
+                        {% if forloop.counter > pg_data.number|add:"-3" and forloop.counter < pg_data.number|add:"3" %}
+                        <li class="page-item {% if forloop.counter == pg_data.number %}active{% endif %}"><a href="?page={{ forloop.counter }}" class="page-link">{{ forloop.counter }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if pg_data.has_next %}
+                        <li class="page-item"><a href="?page={{ pg_data.next_page_number }}" class="page-link">Next</a></li>
+                        <li class="page-item"><a href="?page={{ pg_data.paginator.num_pages }}" class="page-link">Last &raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
         </main>
 
-      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="display: inline-block;">
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse flex-row" style="display: inline-block;">
         <div class="position-sticky pt-3">
           <h5>Filter</h5>
           <form id="filterForm" method="get" action="{% url 'analysis' %}">
@@ -130,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -154,12 +190,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('showTable').addEventListener('change', function() {
             var table = document.getElementById('table_analysis');
-        
+            var paginator = document.getElementById('analysis_paginator')
             if (this.checked) {
                 table.style.display = '';
+                paginator.style.display = '';
             } else {
                 table.style.display = 'none';
+                paginator.style.display = 'none';
             }
         });
+
+
+
+
+
       </script>
 {% endblock %}

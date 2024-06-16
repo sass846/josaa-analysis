@@ -1,7 +1,5 @@
 # JoSAA Analysis
 
-JoSAA Analysis is a Django-based web application that provides insights into the Joint Seat Allocation Authority (JoSAA) data. The website features sections for "Participating Institutes," "Seat Matrix," and "Previous Year Analysis," offering a comprehensive view of the available data through interactive charts and tables.
-
 ## Table of Contents
 - [Project Description](#project-description)
 - [Technologies Used](#technologies-used)

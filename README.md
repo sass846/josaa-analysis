@@ -9,7 +9,7 @@
 - [Repository Structure](#repository-structure)
 
 ## Project Description
-The JoSAA Analysis portal aims to provide users with detailed information about participating institutes, seat availability, and past trends. By leveraging data scraping tools and interactive charts, users can analyze historical data to make informed decisions.
+The JoSAA Analysis portal aims to provide users with detailed information about participating institutes, seat availability, and past trends. By leveraging data scraping tools and interactive charts, users can analyze previous year data to make informed decisions.
 
 ## Technologies Used
 - **Data Scraping**: Selenium and BeautifulSoup

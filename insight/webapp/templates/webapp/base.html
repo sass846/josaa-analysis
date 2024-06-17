@@ -24,6 +24,29 @@
             margin-top: auto;
         }
 
+    .list-group-item {
+        background-color: #ffffff;
+        border: none;
+        border-bottom: 1px solid #dee2e6;
+        display: flex;
+        align-items: start;
+    }
+    .list-group-item:last-child {
+        border-bottom: none;
+    }
+    .badge {
+        font-size: 0.9rem;
+        align-self: start;
+    }
+    .badge + div {
+        flex: 1;
+    }
+    aside {
+        max-width: 300px;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
     </style>
   </head>
   <body class="pattern-background">
@@ -67,14 +90,65 @@
     <div>
         <div class="container-fluid my-5" id="content">
             <div class="row">
-                <aside class="col-md-2 border-end ms-3 bg-light">
-                    <h3> Important Dates</h2>
-
-
-                    <h3> Important Documents</h2>
-
+                <aside class="col-md-2 border-end ms-3 bg-light p-3">
+                    <h3>Important Dates</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <span class="badge bg-primary rounded-pill me-2">14-jun</span>
+                                Candidate registration and choice filling for academic programs under JoSAA 2024 ENDS (Auto/System Locking of Choices)
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <span class="badge bg-primary rounded-pill me-2">20-june</span>
+                                (Round 1) Seat Allocation
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <span class="badge bg-primary rounded-pill me-2">24-june</span>
+                                (Round 1) *Last date for fee payment
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <span class="badge bg-primary rounded-pill me-2">27-june</span>
+                                (Round 2) Seat Allocation
+                            </div>
+                        </li>       
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <span class="badge bg-primary rounded-pill me-2">01-july</span>
+                                (Round 2) *Last date for fee payment
+                            </div>
+                        </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <span class="badge bg-primary rounded-pill me-2">04-july</span>
+                            (Round 3) Seat Allocation
+                        </div>
+                    </li>                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <span class="badge bg-primary rounded-pill me-2">08-july</span>
+                            (Round 3) *Last date for fee payment
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <span class="badge bg-primary rounded-pill me-2">10-july</span>
+                            (Round 4) Seat Allocation
+                        </div>
+                    </li>                        
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <span class="badge bg-primary rounded-pill me-2">15-july</span>
+                            (Round 4) *Last date for fee payment
+                        </div>
+                    </li>
+                        
+                    </ul>
                 </aside>
-
                 <main class="col-md-9 ">
 
                     {% block content %}

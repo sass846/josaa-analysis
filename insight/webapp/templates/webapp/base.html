@@ -85,10 +85,11 @@
         </div>
     </div>
 
+    {% block content %}
     <div>
         <div class="container-fluid my-5" id="content">
             <div class="row">
-                <aside class="col-md-2 border-end ms-3 bg-light p-3">
+                {% comment %} <aside class="col-md-2 border-end ms-3 bg-light p-3">
                     <h3>Important Dates</h3>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -158,19 +159,20 @@
                     </li>
                         
                     </ul>
-                </aside>
+                </aside> {% endcomment %}
                 <main class="col-md-9 ">
 
-                    {% block content %}
+                    {% comment %} {% block content %} {% endcomment %}
                         <div class="container-fluid m-auto">
                             <h1 class="display-1">This page is under development</h1>
                         </div>
-                    {% endblock %}
+                    {% comment %} {% endblock %} {% endcomment %}
 
                 </main>
             </div>
         </div>
     </div>
+    {% endblock %}
     <!-- intro -->
 
 
